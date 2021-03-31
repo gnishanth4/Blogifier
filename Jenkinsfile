@@ -20,7 +20,7 @@ pipeline {
     }
     stage('Build') {
       steps {
-        powershell("msbuild  C:/Users\Administrator\Source\Repos\Blogifier\Blogifier.sln /t:Publish /p:Configuration=Debug")        
+        powershell("msbuild  C:/Users/Administrator/Source/Repos/Blogifier/Blogifier.sln /t:Publish /p:Configuration=Debug")        
       }
     }
     stage('Deploy') {
