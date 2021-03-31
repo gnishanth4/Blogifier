@@ -43,7 +43,7 @@ pipeline {
       stage('Genarate Artifacts') {
           steps {
           environment {
-                JOB_NAME= '-g',
+                JOB_NAME= '-g'
                 BUILD_NUMBER= '-g'
                 
             }
