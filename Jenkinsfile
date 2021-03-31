@@ -22,7 +22,14 @@ pipeline {
             dotnet sonarscanner end /d:sonar.login="ee5f103702e5d3eb33b0c4733e0d5f87a2ecb57a" 
             ''')    
         }
-    }   
+    } 
+    stage('Clean') {
+        steps {
+            powershell('msbuild clean C:/Users/Administrator/Source/Repos/Blogifier/Blogifier.sln')
+        }
+    }
+          
+      
     stage('Restore packages') {
        steps {
           powershell("msbuild -r C:/Users/Administrator/Source/Repos/Blogifier/Blogifier.sln")
