@@ -1,6 +1,9 @@
 String githubUrl = "https://github.com/gnishanth4/Blogifier.git"
 
-node () {
+pipeline {
+    
+    agent any
+    
     stage('Checkout') {
         checkout([
             $class: 'GitSCM', 
@@ -12,7 +15,7 @@ node () {
     }
     stage('Restore packages') {
        steps {
-          ps msbuild -r C:/Users/Administrator/Source/Repos/Blogifier/Blogifier.sln
+          powershell("msbuild -r C:/Users/Administrator/Source/Repos/Blogifier/Blogifier.sln")
       }
     }
     stage('Build') {
