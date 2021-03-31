@@ -47,7 +47,7 @@ pipeline {
             }
           steps {
       
-            powershell('msbuild C:/Users/Administrator/Source/Repos/Blogifier/Blogifier.sln /p:DeployOnBuild=true /p:WebPublishMethod=Package /p:PackageAsSingleFile=true /p:PackageLocation="C:/ProgramFiles/NexusRepo/1.2-${JOB_NAME}-${BUILD_NUMBER}-aspcore.zip"')
+            powershell('msbuild C:/Users/Administrator/Source/Repos/Blogifier/Blogifier.sln /p:DeployOnBuild=true /p:WebPublishMethod=Package /p:PackageAsSingleFile=true /p:PackageLocation="C:/ProgramFiles/NexusRepo/1.2-env.JOB_NAME-env.BUILD_NUMBER-aspcore.zip"')
           }
       } 
      
