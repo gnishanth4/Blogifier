@@ -4,6 +4,7 @@ pipeline {
   agent any
   stages {
     stage('Checkout') {
+        steps {
         checkout([
             $class: 'GitSCM', 
             branches: [[name: 'master']], 
@@ -11,7 +12,8 @@ pipeline {
             extensions: [], 
             submoduleCfg: [], 
             userRemoteConfigs: [[url: """ "${githubUrl}" """]]])
-    }
+     }
+    }    
     stage('Restore packages') {
        steps {
           powershell("msbuild -r C:/Users/Administrator/Source/Repos/Blogifier/Blogifier.sln")
