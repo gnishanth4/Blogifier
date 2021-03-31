@@ -40,6 +40,14 @@ pipeline {
         powershell("msbuild  C:/Users/Administrator/Source/Repos/Blogifier/Blogifier.sln /t:Publish /p:Configuration=Debug")        
       }
     }
+      stage('Genarate Artifacts') {
+          steps {
+             msbuild C:/Users/Administrator/Source/Repos/Blogifier/Blogifier.sln /p:DeployOnBuild=true 
+             /p:WebPublishMethod=Package 
+             /p:PackageAsSingleFile=true 
+             /p:PackageLocation="C:\ProgramFiles\NexusRepo\${BUID_VERSION}.zip" 
+          }
+      } 
      
     stage('Deploy') {
       steps {
