@@ -35,7 +35,7 @@ pipeline {
           powershell("msbuild -r C:/Users/Administrator/Source/Repos/Blogifier/Blogifier.sln")
       }
     }
-    stage('Build') {
+    stage('Build Code') {
       steps {
         powershell("msbuild  C:/Users/Administrator/Source/Repos/Blogifier/Blogifier.sln /t:Publish /p:Configuration=Debug")        
       }
