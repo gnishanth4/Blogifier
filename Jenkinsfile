@@ -17,7 +17,7 @@ pipeline {
     stage('Sonar Analysis') {
         steps {
             powershell("dotnet tool install --global dotnet-sonarscanner")
-            powershell("dotnet sonarscanner begin /k:"Aspweb-App"  /d:sonar.login="ee5f103702e5d3eb33b0c4733e0d5f87a2ecb57a" ")
+            powershell('dotnet sonarscanner begin /k:"Aspweb-App"  /d:sonar.login="ee5f103702e5d3eb33b0c4733e0d5f87a2ecb57a" ')
             powershell("dotnet build C:/Users/Administrator/Source/Repos/Blogifier/Blogifier.sln")  
             powershell("dotnet sonarscanner end /d:sonar.login="ee5f103702e5d3eb33b0c4733e0d5f87a2ecb57a" ")    
         }
