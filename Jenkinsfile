@@ -41,13 +41,10 @@ pipeline {
       }
     }
       stage('Genarate Artifacts') {
-          environment {
-                JOB_NAME= '-g'
-                BUILD_NUMBER= '-g'            
-            }
+          
           steps {
-      
-            powershell('msbuild C:/Users/Administrator/Source/Repos/Blogifier/Blogifier.sln /p:DeployOnBuild=true /p:WebPublishMethod=Package /p:PackageAsSingleFile=true /p:PackageLocation="C:/ProgramFiles/NexusRepo/1.2-env.JOB_NAME-env.BUILD_NUMBER-aspcore.zip"')
+            echo "Airtifact on ${env.BUILD_ID}-${env.JOB_NAME}-ASP.zip"
+            powershell('msbuild C:/Users/Administrator/Source/Repos/Blogifier/Blogifier.sln /p:DeployOnBuild=true /p:WebPublishMethod=Package /p:PackageAsSingleFile=true /p:PackageLocation="C:/ProgramFiles/NexusRepo/1.2-${env.BUILD_ID}-${env.JOB_NAME}-aspcore.zip"')
           }
       } 
      
