@@ -2,6 +2,10 @@ String githubUrl = "https://github.com/gnishanth4/Blogifier.git"
 
 pipeline {
   agent any
+  environment { 
+      BUID_ID = '${env.BUILD_ID}'
+      JOB_NAME = '${env.JOB_NAME}'
+    }  
   stages {
     stage('Checkout') {
         steps {
@@ -44,7 +48,7 @@ pipeline {
           
           steps {
             echo "Airtifact on ${env.BUILD_ID}-${env.JOB_NAME}-ASP.zip"
-            powershell('msbuild C:/Users/Administrator/Source/Repos/Blogifier/Blogifier.sln /p:DeployOnBuild=true /p:WebPublishMethod=Package /p:PackageAsSingleFile=true /p:PackageLocation="C:/ProgramFiles/NexusRepo/1.2-${env.BUILD_ID}-${env.JOB_NAME}-aspcore.zip"')
+            powershell('msbuild C:/Users/Administrator/Source/Repos/Blogifier/Blogifier.sln /p:DeployOnBuild=true /p:WebPublishMethod=Package /p:PackageAsSingleFile=true /p:PackageLocation="C:/ProgramFiles/NexusRepo/1.2-${BUILD_ID}-${JOB_NAME}-aspcore.zip"')
           }
       } 
      
