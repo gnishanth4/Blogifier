@@ -12,8 +12,16 @@ pipeline {
             extensions: [], 
             submoduleCfg: [], 
             userRemoteConfigs: [[url: """ "${githubUrl}" """]]])
-     }
-    }    
+     }        
+    } 
+    stage(Sonar Analysis) {
+        steps {
+            dotnet tool install --global dotnet-sonarscanner
+            dotnet sonarscanner begin /k:"Aspweb-App"  /d:sonar.login="ee5f103702e5d3eb33b0c4733e0d5f87a2ecb57a"
+            dotnet build C:/Users/Administrator/Source/Repos/Blogifier/Blogifier.sln  
+            dotnet sonarscanner end /d:sonar.login="ee5f103702e5d3eb33b0c4733e0d5f87a2ecb57a"    
+        }
+    }   
     stage('Restore packages') {
        steps {
           powershell("msbuild -r C:/Users/Administrator/Source/Repos/Blogifier/Blogifier.sln")
