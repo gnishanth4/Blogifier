@@ -25,7 +25,7 @@ pipeline {
     } 
     stage('Clean') {
         steps {
-            powershell('msbuild clean C:/Users/Administrator/Source/Repos/Blogifier/Blogifier.sln')
+            powershell('msbuild C:/Users/Administrator/Source/Repos/Blogifier/Blogifier.sln /t:Clean')
         }
     }
           
