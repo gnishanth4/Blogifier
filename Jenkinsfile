@@ -42,7 +42,12 @@ pipeline {
     }
       stage('Genarate Artifacts') {
           steps {
-            powershell('msbuild C:/Users/Administrator/Source/Repos/Blogifier/Blogifier.sln /p:DeployOnBuild=true /p:WebPublishMethod=Package /p:PackageAsSingleFile=true /p:PackageLocation="C:/ProgramFiles/NexusRepo/${JOB_NAME}-${BUILD_NUMBER}-aspcore.zip"')
+          environment {
+                JOB_NAME= '-g',
+                BUILD_NUMBER= '-g'
+                
+            }
+            powershell('msbuild C:/Users/Administrator/Source/Repos/Blogifier/Blogifier.sln /p:DeployOnBuild=true /p:WebPublishMethod=Package /p:PackageAsSingleFile=true /p:PackageLocation="C:/ProgramFiles/NexusRepo/1.2-${JOB_NAME}-${BUILD_NUMBER}-aspcore.zip"')
           }
       } 
      
